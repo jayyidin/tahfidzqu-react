@@ -1,6 +1,6 @@
 "use client";
 
-import { AppProvider, useAppStore } from "@/lib/store";
+import { useAppStore } from "@/lib/store";
 import Header from "./Header";
 import HomeView from "./views/HomeView";
 import PlayerView from "./views/PlayerView";
@@ -44,9 +44,5 @@ const AppContent = () => {
 };
 
 export default function MainApp() {
-  return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
-  );
+  return <AppContent />;
 }

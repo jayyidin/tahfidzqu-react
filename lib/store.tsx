@@ -100,7 +100,10 @@ const defaultState: AppState = {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [state, setState] = useState<AppState>(defaultState);
+  const [state, setState] = useState<AppState>(() => {
+    const savedTheme = typeof window !== 'undefined' ? localStorage.getItem("theme") : "light";
+    return { ...defaultState, theme: savedTheme || "light" };
+  });
   const [fbUser, setFbUser] = useState<any>(null);
 
   const updateState = (updates: Partial<AppState> | ((prev: AppState) => Partial<AppState>)) => {
@@ -154,6 +157,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   useEffect(() => {
+    console.log("AppProvider rendered, theme:", state.theme);
     const initAuth = async () => {
       try {
         await signInAnonymously(auth);
@@ -200,7 +204,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           (error) => {
             console.error(`Firebase DB Error (${c}):`, error);
             if (error.message.includes("permission_denied")) {
-              updateState({ firebaseError: `Akses Cloud Ditolak! Ubah Aturan (Rules) Realtime Database menjadi true. Detail: ${error.message}` });
+              updateState({ firebaseError: "Akses Cloud Ditolak! Ubah Aturan (Rules) Realtime Database menjadi true." });
             } else {
               updateState({ firebaseError: `Akses Cloud Ditolak! ${error.message}` });
             }
@@ -214,11 +218,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Theme effect
   useEffect(() => {
-    if (state.theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    localStorage.setItem("theme", state.theme);
+    document.documentElement.classList.toggle("dark", state.theme === "dark");
   }, [state.theme]);
 
   return (

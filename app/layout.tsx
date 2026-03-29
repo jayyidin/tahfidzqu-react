@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Merriweather, Amiri, Katibeh } from "next/font/google";
 import "./globals.css"; // Global styles
+import Providers from "@/components/Providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,7 +50,7 @@ export default function RootLayout({
         className={`${inter.variable} ${merriweather.variable} ${amiri.variable} ${katibeh.variable} font-sans bg-slate-50 text-slate-800 dark:bg-[#0a120f] dark:text-gray-200 flex flex-col w-full h-full transition-colors duration-300 antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
