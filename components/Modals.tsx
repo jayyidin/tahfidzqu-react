@@ -520,7 +520,7 @@ export default function Modals() {
           )}
           <input
             type="text"
-            value={formData.username}
+            value={formData.username || ""}
             onChange={(e) => setFormData({ ...formData, username: e.target.value })}
             onKeyDown={(e) => e.key === "Enter" && handleLogin()}
             className="input-std mb-3 text-center"
@@ -528,7 +528,7 @@ export default function Modals() {
           />
           <input
             type="password"
-            value={formData.password}
+            value={formData.password || ""}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             onKeyDown={(e) => e.key === "Enter" && handleLogin()}
             className="input-std mb-4 text-center tracking-widest"
@@ -558,7 +558,7 @@ export default function Modals() {
             <input
               type="text"
               required
-              value={formData.name}
+              value={formData.name || ""}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="input-std mb-6"
               placeholder="Nama Juz"
@@ -581,7 +581,7 @@ export default function Modals() {
           <form onSubmit={handleSaveSurah}>
             <select
               required
-              value={formData.title}
+              value={formData.title || ""}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               className="input-std cursor-pointer mb-4"
             >
@@ -596,7 +596,7 @@ export default function Modals() {
             </select>
             <input
               type="text"
-              value={formData.videoId}
+              value={formData.videoId || ""}
               onChange={(e) => setFormData({ ...formData, videoId: e.target.value })}
               placeholder="Link YouTube (Opsional)"
               className="input-std mb-6"
@@ -620,7 +620,7 @@ export default function Modals() {
             <input
               type="text"
               required
-              value={formData.videoId}
+              value={formData.videoId || ""}
               onChange={(e) => setFormData({ ...formData, videoId: e.target.value })}
               className="input-std mb-6"
               placeholder="Paste link YouTube di sini..."
@@ -644,7 +644,7 @@ export default function Modals() {
             <input
               type="text"
               required
-              value={formData.name}
+              value={formData.name || ""}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="input-std mb-6"
               placeholder="Contoh: Level 2..."
@@ -670,7 +670,7 @@ export default function Modals() {
               <input
                 type="text"
                 required
-                value={formData.title}
+                value={formData.title || ""}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 className="input-std"
               />
@@ -680,7 +680,7 @@ export default function Modals() {
               <textarea
                 rows={3}
                 dir="rtl"
-                value={formData.arabic}
+                value={formData.arabic || ""}
                 onChange={(e) => setFormData({ ...formData, arabic: e.target.value })}
                 className="input-std font-arabic text-xl"
               />
@@ -689,7 +689,7 @@ export default function Modals() {
               <label className="block text-[10px] text-slate-500 font-bold mb-1">TERJEMAH</label>
               <textarea
                 rows={2}
-                value={formData.translation}
+                value={formData.translation || ""}
                 onChange={(e) => setFormData({ ...formData, translation: e.target.value })}
                 className="input-std text-xs md:text-sm"
               />
@@ -700,14 +700,14 @@ export default function Modals() {
                 <div className="flex justify-center items-center gap-1">
                   <input
                     type="number"
-                    value={formData.sm}
+                    value={formData.sm || ""}
                     onChange={(e) => setFormData({ ...formData, sm: e.target.value })}
                     className="input-std !w-14 !p-1.5 text-center"
                   />
                   <span className="font-bold">:</span>
                   <input
                     type="number"
-                    value={formData.ss}
+                    value={formData.ss || ""}
                     onChange={(e) => setFormData({ ...formData, ss: e.target.value })}
                     className="input-std !w-14 !p-1.5 text-center"
                   />
@@ -718,14 +718,14 @@ export default function Modals() {
                 <div className="flex justify-center items-center gap-1">
                   <input
                     type="number"
-                    value={formData.em}
+                    value={formData.em || ""}
                     onChange={(e) => setFormData({ ...formData, em: e.target.value })}
                     className="input-std !w-14 !p-1.5 text-center"
                   />
                   <span className="font-bold">:</span>
                   <input
                     type="number"
-                    value={formData.es}
+                    value={formData.es || ""}
                     onChange={(e) => setFormData({ ...formData, es: e.target.value })}
                     className="input-std !w-14 !p-1.5 text-center"
                   />
@@ -751,14 +751,14 @@ export default function Modals() {
             <input
               type="text"
               required
-              value={formData.name}
+              value={formData.name || ""}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="input-std mb-3"
               placeholder="Nama Lengkap"
             />
             <input
               type="text"
-              value={formData.phone}
+              value={formData.phone || ""}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               className="input-std mb-3"
               placeholder="No. WhatsApp (Opsional)"
@@ -766,7 +766,7 @@ export default function Modals() {
             <input
               type="text"
               required
-              value={formData.username}
+              value={formData.username || ""}
               onChange={(e) => setFormData({ ...formData, username: e.target.value })}
               className="input-std mb-3"
               placeholder="Username Login"
@@ -774,7 +774,7 @@ export default function Modals() {
             <input
               type="password"
               required
-              value={formData.password}
+              value={formData.password || ""}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               className="input-std mb-6"
               placeholder="Password"
@@ -798,7 +798,7 @@ export default function Modals() {
             <input
               type="text"
               required
-              value={formData.name}
+              value={formData.name || ""}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="input-std mb-6"
               placeholder="Nama Halaqoh"
@@ -822,7 +822,7 @@ export default function Modals() {
             <input
               type="text"
               required
-              value={formData.name}
+              value={formData.name || ""}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="input-std mb-3"
               placeholder="Nama Santri"
@@ -830,7 +830,7 @@ export default function Modals() {
             <input
               type="text"
               required
-              value={formData.kelas}
+              value={formData.kelas || ""}
               onChange={(e) => setFormData({ ...formData, kelas: e.target.value })}
               className="input-std mb-6"
               placeholder="Kelas / Tingkat"
@@ -852,7 +852,7 @@ export default function Modals() {
           </div>
           <textarea
             rows={6}
-            value={formData.text}
+            value={formData.text || ""}
             onChange={(e) => setFormData({ ...formData, text: e.target.value })}
             className="input-std mb-4"
             placeholder="Paste data dari Excel/Spreadsheet di sini..."
@@ -881,7 +881,7 @@ export default function Modals() {
               Catatan Teks:
             </label>
             <textarea
-              value={formData.note}
+              value={formData.note || ""}
               onChange={(e) => setFormData({ ...formData, note: e.target.value })}
               className="input-std"
               rows={2}

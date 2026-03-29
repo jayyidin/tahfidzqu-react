@@ -157,8 +157,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const initAuth = async () => {
       try {
         await signInAnonymously(auth);
-      } catch (e) {
-        updateState({ firebaseError: "Gagal login ke Cloud: Pastikan 'Anonymous Sign-in' telah DIAKTIFKAN." });
+      } catch (e: any) {
+        console.error("Firebase Auth Error:", e);
+        updateState({ firebaseError: `Gagal login ke Cloud: ${e.message || "Pastikan 'Anonymous Sign-in' telah DIAKTIFKAN."}` });
       }
     };
     initAuth();
@@ -172,6 +173,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         if (obj) {
           updateState({ schLogo: obj.logo || "", schSub: obj.subtitle || "" });
         }
+      }, (error) => {
+        console.error("Firebase DB Error (settings):", error);
+        updateState({ firebaseError: `Akses Cloud Ditolak! ${error.message}` });
       });
 
       const collections = ["juzs", "surahs", "levels", "segs", "ustadz", "halaqohs", "siswas", "subs"];
@@ -194,8 +198,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             });
           },
           (error) => {
+            console.error(`Firebase DB Error (${c}):`, error);
             if (error.message.includes("permission_denied")) {
-              updateState({ firebaseError: "Akses Cloud Ditolak! Ubah Aturan (Rules) Realtime Database." });
+              updateState({ firebaseError: `Akses Cloud Ditolak! Ubah Aturan (Rules) Realtime Database menjadi true. Detail: ${error.message}` });
+            } else {
+              updateState({ firebaseError: `Akses Cloud Ditolak! ${error.message}` });
             }
           }
         );
