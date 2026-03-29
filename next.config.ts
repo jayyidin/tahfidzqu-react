@@ -1,6 +1,6 @@
 import type {NextConfig} from 'next';
 
-const isGithubActions = process.env.GITHUB_ACTIONS || false;
+const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
 let basePath = '';
 
 if (isGithubActions && process.env.GITHUB_REPOSITORY) {
@@ -30,8 +30,7 @@ const nextConfig: NextConfig = {
     ],
   },
   output: isGithubActions ? 'export' : 'standalone',
-  basePath: basePath,
-  assetPrefix: basePath,
+  ...(basePath ? { basePath, assetPrefix: basePath } : {}),
   transpilePackages: ['motion'],
   webpack: (config, {dev}) => {
     // HMR is disabled in AI Studio via DISABLE_HMR env var.

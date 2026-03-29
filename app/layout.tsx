@@ -30,6 +30,14 @@ export const metadata: Metadata = {
   description: "Madrasah Tahfidz Quran",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
+  maximumScale: 1.0,
+  userScalable: false,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -37,12 +45,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
-        />
-      </head>
       <body
         className={`${inter.variable} ${merriweather.variable} ${amiri.variable} ${katibeh.variable} font-sans bg-slate-50 text-slate-800 dark:bg-[#0a120f] dark:text-gray-200 flex flex-col w-full h-full transition-colors duration-300 antialiased`}
         suppressHydrationWarning
