@@ -496,7 +496,7 @@ export default function PlayerView() {
               <h3 className="inline-block bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 font-bold text-[10px] lg:text-[11px] px-3 py-1.5 rounded-lg mb-5 lg:mb-6 uppercase tracking-widest text-left relative z-10">
                 {cSg.title}
               </h3>
-              <p className="font-arabic text-3xl lg:text-4xl dark:text-white mb-6 lg:mb-8 relative z-10 leading-[2.5] lg:leading-[2.5] text-right">
+              <p className="font-arabic text-2xl md:text-3xl lg:text-4xl dark:text-white mb-6 lg:mb-8 relative z-10 leading-[2.5] lg:leading-[2.5] text-right break-words max-w-full">
                 {displayArabic}
               </p>
               <div className="border-t border-slate-100 dark:border-[#1a2e26] pt-4 lg:pt-5">
@@ -506,6 +506,21 @@ export default function PlayerView() {
               </div>
             </div>
           )}
+
+          {/* Filter Level Dropdown */}
+          <div className="lg:hidden mt-4">
+            <select
+              value={currentLevelId || ""}
+              onChange={(e) => updateState({ actLevelId: Number(e.target.value), actSegId: null })}
+              className="w-full p-3 rounded-xl border border-slate-200 dark:border-[#1a2e26] bg-white dark:bg-[#15241e] text-sm font-bold text-slate-700 dark:text-gray-200"
+            >
+              {ml.map((l) => (
+                <option key={l.id} value={l.id}>
+                  {l.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
           {/* Mobile Segments */}
           <div className="lg:hidden mt-2 flex flex-col gap-3">

@@ -1,13 +1,16 @@
-import Link from 'next/link'
- 
+import Link from "next/link";
+
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50 dark:bg-[#0a120f] text-slate-800 dark:text-gray-200">
-      <h2 className="text-4xl font-bold mb-4">Not Found</h2>
-      <p className="mb-8">Could not find requested resource</p>
-      <Link href="/" className="px-6 py-3 bg-emerald-500 text-white rounded-xl font-bold hover:bg-emerald-600 transition-colors">
+    <div className="flex min-h-screen flex-col items-center justify-center p-24 text-center">
+      <h2 className="text-4xl font-bold">404 - Not Found</h2>
+      <p className="mt-4 text-gray-600">Could not find requested resource</p>
+      <Link
+        href="/"
+        className="mt-6 rounded-md bg-black px-4 py-2 text-white hover:bg-gray-800"
+      >
         Return Home
       </Link>
     </div>
-  )
+  );
 }

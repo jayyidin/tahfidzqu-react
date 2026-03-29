@@ -253,11 +253,10 @@ export default function AdminView() {
                     </div>
 
                     <div className="w-full relative z-20">
-                      {/* Audio Player Placeholder */}
                       {sb.audioUrl ? (
-                        <div className="text-xs text-emerald-600 bg-emerald-50 p-2 rounded-lg text-center">
-                          <Mic className="inline w-4 h-4 mr-1" /> Audio Tersedia
-                        </div>
+                        <audio controls className="w-full h-10 rounded-lg outline-none" src={sb.audioUrl}>
+                          Your browser does not support the audio element.
+                        </audio>
                       ) : (
                         <div className="text-xs text-slate-400 bg-slate-50 p-2 rounded-lg text-center">
                           Tidak ada audio

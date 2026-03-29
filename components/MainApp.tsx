@@ -23,7 +23,7 @@ const AppContent = () => {
         </div>
       )}
       
-      {view !== "player" && <Header />}
+      <Header />
       
       <div className="flex-1 overflow-hidden flex flex-col w-full bg-slate-50/50 dark:bg-[#111c18]">
         {view === "home" && <HomeView />}
